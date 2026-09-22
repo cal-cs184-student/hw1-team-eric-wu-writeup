@@ -32,35 +32,54 @@
 
 		<br>
 
-		Link to webpage: (TODO) <a href="https://cs184.eecs.berkeley.edu/fa26">cs184.eecs.berkeley.edu/fa26</a>
+		Link to webpage: <a href="https://cal-cs184-student.github.io/hw1-team-eric-wu-writeup/">https://cal-cs184-student.github.io/hw1-team-eric-wu-writeup/</a>
 		
 		<br>
 
-		Link to GitHub repository: (TODO) <a href="https://cs184.eecs.berkeley.edu/fa26">cs184.eecs.berkeley.edu/fa26</a>
+		Link to GitHub repository: (TODO) <a href="https://github.com/cal-cs184-student/hw1-team-eric-wu">https://github.com/cal-cs184-student/hw1-team-eric-wu</a>
 
-		<figure>
+		<!-- <figure>
 			<img src="assets/lion.jpg" alt="Lion" style="width:50%"/>
 			<figcaption>You can add images with captions!</figcaption>
-		</figure>
+		</figure> -->
 
 		<!--
 		We've already added one heading per task, to make your write-up as navigable when grading. Please fit your write-up within these sections!
 		-->
 
 		<h2>Overview</h2>
+		<!-- TODO: -->
 		Give a high-level overview of what you implemented in this homework. Think about what you've built as a whole. Share your thoughts on what interesting things you've learned from completing the homework.
 
 		<h2>Task 1: Drawing Single-Color Triangles</h2>
+		<p>
 		For this task, I implemented a simple rasterizer that samples every single pixel in the bounding box of the triangle.
+		Since this rasterizer first computes the bounding box, and only checks pixels in the bounding box, it is
+		no worse than one that checks each sample within the bounding box of the triangle
+		</p>
 
-		Firstly, we check to see if the winding order of the triangle is correct. If not, we will swap to vertices to achieve the correct winding order.
+		<p>
+		Firstly, we check to see if the winding order of the triangle is correct. If not, we will swap to vertices p0 and p1 to achieve the correct winding order.
+		</p>
 
+		<p>
 		Then, we compute the bounding box of the triangle.
+		</p>
 
+		<p>
 		Finally, we loop through every pixel in the bounding box, and determine whether that pixel is in the triangle,
-		by combining three different checks of "is this pixel on the correct side of this line?"
+		by combining three different checks of "is this pixel on the correct side of this line?".
+		This check is done by taking a dot product of a vector from p0 to the point, with a vector that is normal to the line.
+		This dot product can be compared to zero, to check if the point is on the positive or negative side of the line.
+		</p>
+		<p>
+		The final result is a correct rendering of test4 (see below)
 
-		The final result is a correct rendering of test4.
+		<figure>
+			<img src="assets/screenshot_9-22_15-1-27.png" alt="Triangle" style="width:80%"/>
+			<figcaption>Rendering of test4, without anti aliasing!</figcaption>
+		</figure>
+		</p>
 
 		<!-- <p>Here is an example 2x2 gridlike structure using an HTML table. Each <b>tr</b> is a row and each <b>td</b> is a column in that row. You might find this useful for framing and showing your result images in an organized fashion.</p>
 		<div style="display: flex; flex-direction: column; align-items: center;">

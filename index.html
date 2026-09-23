@@ -158,7 +158,41 @@
 
 
 		<h2>Task 4: Barycentric coordinates</h2>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+		<p>
+		A Barycentric coordinate system is used to identify the coordinates of a point P,
+		relative to the three vertices of a reference triangle. The coordinates are given in three numbers,
+		alpha, beta, and gamma, with their sum always being equal to 1. 
+
+		<p>
+		From a linear algebra point of view, we know that P = alpha * P_1 + beta * P_2 + gamma * P_3.
+
+		This allows us to think of alpha, beta, and gamma, as representing how close P is to each vertex of the
+		reference triangle.
+		</p>
+
+		<p>
+		The slide below, from Professor O'Brien's lecture, shows how barycentric coordinates can be visualized.
+		</p>
+
+		<figure>
+			<img src="assets/barycentric_slide_from_professor_obrien.png" alt="slide" style="width:80%"/>
+		</figure>
+
+		<p>
+		Barycentric coordinates can be useful for rasterizing a triangle, and interpolating the colors inside the
+		triangle between the 3 vertices. The weighted sum of barycentric coordinates gives a natural way to 
+		take a weighted sum of the colors in the 3 vertices.
+		</p>
+
+		<p>
+		Below is the result of rendering <code>test7</code>. I am not sure why there is a line
+		in the blue region 
+		that doesn't quite look right.
+		</p>
+		<figure>
+			<img src="assets/test7.png" alt="circle" style="width:80%"/>
+		</figure>
 
 		<h2>Task 5: "Pixel sampling" for texture mapping</h2>
 		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.

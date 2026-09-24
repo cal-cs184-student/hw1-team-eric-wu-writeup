@@ -249,9 +249,66 @@
 		
 
 		<h2>Task 6: "Level Sampling" with mipmaps for texture mapping</h2>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		<p>
+		Level sampling is the idea that we can store a mipmap, which is a precomputed
+		blurred version of the original texture. This allows us to sample from various levels
+		of the mipmap, which will give cleaner looking results that don't have moire artifacts.
+		</p>
+		<p>
+		To choose the right level, we need to know the answer to "how many texels in the texture
+		does the current pixel on the screen occupy?". This question is answered by computing the
+		derivative of the map from screen space to texture space, and taking the texture 
+		resolution into account, in the way that the assignment spec describes.
+		</p>
+		<p>
+		Pixel sampling, level sampling, and the number of samples per pixel are three different 
+		anti-aliasing techniques we can now use.
+		</p>
+		<p>
+		Pixel sampling is the best for antialiasing when we need to smoothly transition
+		between two texels in the texture space. It is not too computationally expensive, since
+		it only requires interpolation between additional texels in the texture space,
+		with no new transformations calculated.
+		</p>
+		<p>
+		Level sampling is the best when we have a pixel on the screen which occupies a lot of
+		texture space. This will smooth out the high frequency noise in the texture, which 
+		prevents anti aliasing. It is overall pretty cheap too, only costing some extra storage
+		for the mipmap, and some derivative calculations to determine the appropriate level.
+		</p>
+		<p>
+		Increasing the number of samples per pixel is another powerful anti aliasing technique.
+		This one is the most computationally expensive, and requires a lot more memory. However,
+		it is conceptually simple and easy to understand. 
+		</p>
+		<div style="display: flex; flex-direction: column; align-items: center;">
+			<table style="width: 100%; text-align: center; border-collapse: collapse;">
+			  <tr>
+				<td style="text-align: center;">
+				  <img src="assets/screenshot_9-23_22-38-20.png" width="400px"/>
+				  <figcaption>L_ZERO and P_NEAREST</figcaption>
+				</td>
+				<td style="text-align: center;">
+				  <img src="assets/screenshot_9-23_22-38-30.png" width="400px"/>
+				  <figcaption>L_ZERO and P_LINEAR</figcaption>
+				</td>
+			  </tr>
+			  <tr>
+				<td style="text-align: center;">
+				  <img src="assets/screenshot_9-23_22-38-34.png" width="400px"/>
+				  <figcaption>L_NEAREST and P_NEAREST</figcaption>
+				</td>
+				<td style="text-align: center;">
+				  <img src="assets/screenshot_9-23_22-38-38.png" width="400px"/>
+				  <figcaption>L_NEAREST and P_LINEAR</figcaption>
+				</td>
+			  </tr>
+			</table>
+		</div>
 
-		<h2>(Optional) Task 7: Extra Credit - Draw Something Creative!</h2>
+
+
+		<!-- <h2>(Optional) Task 7: Extra Credit - Draw Something Creative!</h2>
 		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 		<h2>Additional Notes (please remove)</h2>
@@ -263,7 +320,7 @@
 					<li>You can write display equations like so: \[ a^2 + b^2 = c^2 \]</li>
 				</ul>
 			</li>
-		</ul>
+		</ul> -->
 		</div>
 	</body>
 </html>
